@@ -5,4 +5,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $strOutput = curl_exec($ch);
 curl_close($ch);
 
-echo htmlentities($strOutput);
+$objDOM = new DOMDocument();
+$objDOM->loadHTML($strOutput);
+
+echo $objDOM->getElementById("announcements");
