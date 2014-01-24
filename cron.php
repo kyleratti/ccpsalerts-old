@@ -10,4 +10,4 @@ libxml_use_internal_errors(true);
 $objDOM->loadHTML($strOutput);
 libxml_clear_errors();
 
-echo $objDOM->getElementById("announcements");
+echo $objDOM->getElementById("announcements")->nodeValue;
