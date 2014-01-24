@@ -11,4 +11,16 @@ libxml_use_internal_errors(true);
 $objDOM->loadHTML($strOutput);
 libxml_clear_errors();
 
-echo $objDOM->getElementById("announcements")->nodeValue;
+$objHeader = $objDOM->getElementById("headerEmergency");
+
+if($objHeader !== null)
+{
+	$objAnnouncements = $objDOM->getElementById("announcements");
+
+	if($objAnnouncements !== null)
+	{
+		$strText = $objAnnouncements->nodeValue;
+
+		echo $strText;
+	}
+}
