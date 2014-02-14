@@ -30,7 +30,6 @@ if($objHeader !== null)
 		}
 		else
 		{
-			writeData("");
 			echo "No new status";
 		}
 	}
