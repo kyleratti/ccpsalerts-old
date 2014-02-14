@@ -43,7 +43,7 @@ function send_tweet($strText)
 	);
 
 	$twitter = new TwitterAPIExchange($settings);
-	echo $twitter->buildOauth($url, $requestMethod)
+	echo $twitter->buildOauth($url, 'POST')
 				->setPostfields($postfields)
 				->performRequest();
 }
