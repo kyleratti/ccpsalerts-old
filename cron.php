@@ -31,7 +31,7 @@ if($objHeader !== null)
 function send_tweet($strText)
 {
 	$settings = array(
-		'oauth_access_token' => "9tYGuGX8j5bYCFd2WhHS57uQRFu9bHDg7400oze",
+		'oauth_access_token' => "2342773548-9tYGuGX8j5bYCFd2WhHS57uQRFu9bHDg7400oze",
 		'oauth_access_token_secret' => "T4AhsCc7D6qKughumKDPhPkhEL2HWngBVIkwgXCQaTTRi",
 		'consumer_key' => "RVueQj4xf2tQr4AnvMcOw",
 		'consumer_secret' => "25F6Qg4LUi86ADLX36mdWQydVYAZp4buDLcuBDyUtI"
