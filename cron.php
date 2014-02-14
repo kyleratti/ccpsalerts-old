@@ -33,6 +33,10 @@ if($objHeader !== null)
 			echo "No new status";
 		}
 	}
+	else
+	{
+		writeData("");
+	}
 }
 
 function isNewTweet($strText)
@@ -46,6 +50,13 @@ function isNewTweet($strText)
 	}
 
 	return TRUE;
+}
+
+function writeData($strData)
+{
+	$fh = fopen("last_tweet.txt", 'w') or die("can't open file");
+	fwrite($fh, $strText);
+	fclose($fh);
 }
 
 function send_tweet($strText)
@@ -69,7 +80,5 @@ function send_tweet($strText)
 
 	var_dump($response);
 
-	$fh = fopen("last_tweet.txt", 'w') or die("can't open file");
-	fwrite($fh, $strText);
-	fclose($fh);
+	writeData($strText);
 }
