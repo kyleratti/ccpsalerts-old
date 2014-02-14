@@ -55,7 +55,7 @@ function isNewTweet($strText)
 function writeData($strData)
 {
 	$fh = fopen("last_tweet.txt", 'w') or die("can't open file");
-	fwrite($fh, $strText);
+	fwrite($fh, $strData);
 	fclose($fh);
 }
 
