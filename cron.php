@@ -28,6 +28,10 @@ if($objHeader !== null)
 			send_tweet($strText);
 			echo "<br/><br/>Tweet sent!";
 		}
+		else
+		{
+			echo "No new status";
+		}
 	}
 }
 
