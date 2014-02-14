@@ -24,7 +24,7 @@ if($objHeader !== null)
 		$strText = $objAnnouncements->nodeValue;
 
 		send_tweet($strText);
-		echo "Tweet sent!";
+		echo "<br/><br/>Tweet sent!";
 	}
 }
 
