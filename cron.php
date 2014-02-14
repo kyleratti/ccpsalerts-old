@@ -43,9 +43,9 @@ function send_tweet($strText)
 	);
 
 	$twitter = new TwitterAPIExchange($settings);
-	$response = $twitter->buildOauth($url, 'POST')
+	$response = json_decode($twitter->buildOauth($url, 'POST')
 				->setPostfields($postfields)
-				->performRequest();
+				->performRequest());
 
 	var_dump($response);
 }
