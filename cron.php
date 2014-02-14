@@ -31,10 +31,10 @@ if($objHeader !== null)
 function send_tweet($strText)
 {
 	$settings = array(
-		'oauth_access_token' => " RVueQj4xf2tQr4AnvMcOw",
-		'oauth_access_token_secret' => " 25F6Qg4LUi86ADLX36mdWQydVYAZp4buDLcuBDyUtI",
+		'oauth_access_token' => "RVueQj4xf2tQr4AnvMcOw",
+		'oauth_access_token_secret' => "25F6Qg4LUi86ADLX36mdWQydVYAZp4buDLcuBDyUtI",
 		'consumer_key' => "9tYGuGX8j5bYCFd2WhHS57uQRFu9bHDg7400oze",
-		'consumer_secret' => " T4AhsCc7D6qKughumKDPhPkhEL2HWngBVIkwgXCQaTTRi"
+		'consumer_secret' => "T4AhsCc7D6qKughumKDPhPkhEL2HWngBVIkwgXCQaTTRi"
 	);
 
 	$url = 'https://api.twitter.com/1.1/statuses/update.json';
