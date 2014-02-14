@@ -23,7 +23,7 @@ if($objHeader !== null)
 	{
 		$strText = $objAnnouncements->nodeValue;
 
-		if(new_tweet($strText))
+		if(isNewTweet($strText))
 		{
 			send_tweet($strText);
 			echo "<br/><br/>Tweet sent!";
@@ -35,7 +35,7 @@ if($objHeader !== null)
 	}
 }
 
-function new_tweet($strText)
+function isNewTweet($strText)
 {
 	if(file_exists("./last_tweet.txt"))
 	{
@@ -68,4 +68,8 @@ function send_tweet($strText)
 				->performRequest());
 
 	var_dump($response);
+
+	$fh = fopen("last_tweet.txt", 'w') or die("can't open file");
+	fwrite($fh, $strText);
+	fclose($fh);
 }
