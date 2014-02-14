@@ -23,9 +23,25 @@ if($objHeader !== null)
 	{
 		$strText = $objAnnouncements->nodeValue;
 
-		send_tweet($strText);
-		echo "<br/><br/>Tweet sent!";
+		if(new_tweet($strText))
+		{
+			send_tweet($strText);
+			echo "<br/><br/>Tweet sent!";
+		}
 	}
+}
+
+function new_tweet($strText)
+{
+	if(file_exists("./last_tweet.txt"))
+	{
+		$strData = @file_get_contents("./last_tweet.txt");
+
+		if($strData !== FALSE && $strData === $strText)
+			return FALSE;
+	}
+
+	return TRUE;
 }
 
 function send_tweet($strText)
