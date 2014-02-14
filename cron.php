@@ -39,7 +39,7 @@ function send_tweet($strText)
 
 	$url = 'https://api.twitter.com/1.1/statuses/update.json';
 	$postfields = array(
-		'status' => htmlentities($strText),
+		'status' => substr($strText, 0, 140),
 	);
 
 	$twitter = new TwitterAPIExchange($settings);
