@@ -1,4 +1,6 @@
 <?php
+require_once("TwitterAPIExchange.php");
+
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, "http://www.carrollk12.org");
 //curl_setopt($ch, CURLOPT_URL, "https://dl.dropboxusercontent.com/u/161991137/saved/Carroll%20County%20Public%20Schools.html");
@@ -21,6 +23,26 @@ if($objHeader !== null)
 	{
 		$strText = $objAnnouncements->nodeValue;
 
-		echo $strText;
+		send_tweet($strText);
 	}
+}
+
+function send_tweet($strText)
+{
+	$settings = array(
+		'oauth_access_token' => " RVueQj4xf2tQr4AnvMcOw",
+		'oauth_access_token_secret' => " 25F6Qg4LUi86ADLX36mdWQydVYAZp4buDLcuBDyUtI",
+		'consumer_key' => "9tYGuGX8j5bYCFd2WhHS57uQRFu9bHDg7400oze",
+		'consumer_secret' => " T4AhsCc7D6qKughumKDPhPkhEL2HWngBVIkwgXCQaTTRi"
+	);
+
+	$url = 'https://api.twitter.com/1.1/statuses/update.json';
+	$postfields = array(
+		'status' => htmlentities($strText),
+	);
+
+	$twitter = new TwitterAPIExchange($settings);
+	echo $twitter->setPostfields($postfields)
+				->buildOauth($url, $requestMethod)
+				->performRequest();
 }
