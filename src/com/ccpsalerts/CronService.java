@@ -11,13 +11,11 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public class CronService extends Thread
 {
-	private static final long DELAY = 60;
-
 	@Override
 	public void run()
 	{
 		ScheduledExecutorService objThreadPool = Executors.newScheduledThreadPool(5);
-		objThreadPool.scheduleAtFixedRate(new MinuteCron(), 0, CronService.DELAY, TimeUnit.SECONDS);
+		objThreadPool.scheduleAtFixedRate(new MinuteCron(), 0, 60, TimeUnit.SECONDS);
 	}
 }
 
