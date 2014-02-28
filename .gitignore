@@ -1,6 +1,6 @@
 *.class
 website.dat
-ccpsalerts.jar
+# ccpsalerts.jar
 
 # Package Files #
 # *.jar
