@@ -26,6 +26,8 @@ class MinuteCron implements Runnable
 	{
 		Driver.println("Starting WebsiteChecker");
 		WebsiteChecker objChecker = new WebsiteChecker();
+		Driver.println("Created new WebsiteChecker");
 		objChecker.start();
+		Driver.println("Started WebsiteChecker");
 	}
 }
