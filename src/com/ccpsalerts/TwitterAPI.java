@@ -11,7 +11,7 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class TwitterAPI
 {
-	public static void updateStatus(String strStatus)
+	private static Twitter getInstance()
 	{
 		ConfigurationBuilder objConf = new ConfigurationBuilder();
 		objConf.setDebugEnabled(true)
@@ -21,15 +21,17 @@ public class TwitterAPI
 			.setOAuthAccessTokenSecret("T4AhsCc7D6qKughumKDPhPkhEL2HWngBVIkwgXCQaTTRi");
 
 		TwitterFactory objTF = new TwitterFactory(objConf.build());
-		Twitter objTwitter = objTF.getInstance();
+		return objTF.getInstance();
+	}
 
-		try
-		{
-			objTwitter.updateStatus(strStatus);
-		}
-		catch(TwitterException e)
-		{
-			e.printStackTrace();
-		}
+	/**
+	* Update the status
+	*
+	* @param strStatus The string to set the status to
+	* @throws TwitterException
+	*/
+	public static void updateStatus(String strStatus) throws TwitterException
+	{
+		TwitterAPI.getInstance().updateStatus("Just in- '" + strStatus + "'");
 	}
 }
