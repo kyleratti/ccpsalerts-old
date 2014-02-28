@@ -92,6 +92,7 @@ public class WebsiteChecker extends Thread
 	@Override
 	public void run()
 	{
+		System.out.println("Debug");
 		try
 		{
 			System.out.println("ok");
