@@ -32,6 +32,6 @@ public class TwitterAPI
 	*/
 	public static void updateStatus(String strStatus) throws TwitterException
 	{
-		TwitterAPI.getInstance().updateStatus("Just in- '" + strStatus + "'");
+		TwitterAPI.getInstance().updateStatus(strStatus);
 	}
 }
