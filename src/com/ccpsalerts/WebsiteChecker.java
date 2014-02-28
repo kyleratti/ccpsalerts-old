@@ -95,6 +95,7 @@ public class WebsiteChecker extends Thread
 		try
 		{
 			Document objDoc = Jsoup.connect(WebsiteChecker.TARGET_URL).timeout(1000*25).get();
+			System.out.println("ok");
 			Element objHeader = objDoc.getElementById("headerEmergency");
 
 			boolean bUpdated = false;
