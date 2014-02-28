@@ -2,6 +2,6 @@
 website.dat
 
 # Package Files #
-*.jar
+# *.jar
 *.war
 *.ear
