@@ -1,1 +1,13 @@
+<<<<<<< HEAD
 *.class
+=======
+*.class
+website.dat
+# ccpsalerts.jar
+
+# Package Files #
+# *.jar
+*.war
+*.ear
+src/ccpsalerts.jar
+>>>>>>> origin/java-dev
