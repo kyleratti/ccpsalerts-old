@@ -24,7 +24,7 @@ class MinuteCron implements Runnable
 	@Override
 	public void run()
 	{
-		Driver.println("Starting WebsiteChecker");
+		Driver.println("Launching WebsiteChecker");
 		WebsiteChecker objChecker = new WebsiteChecker();
 		objChecker.start();
 	}
