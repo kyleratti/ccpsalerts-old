@@ -7,6 +7,7 @@ package com.ccpsalerts;
 
 import java.net.URL;
 import java.net.HttpURLConnection;
+import java.net.URISyntaxException;
 import java.net.MalformedURLException;
 
 import java.io.File;
@@ -40,21 +41,28 @@ public class WebsiteChecker extends Thread
 
 	private String getLastAnnouncement()
 	{
-		File objFile = new File(WebsiteChecker.DATA_FILE);
-
-		if(objFile.exists())
+		try
 		{
-			try
-			{
-				List<String> arrLines = Files.readAllLines(Paths.get(WebsiteChecker.DATA_FILE), Charset.defaultCharset());
+			File objFile = new File(Thread.currentThread().getContextClassLoader().getResource(WebsiteChecker.DATA_FILE).toURI());
 
-				if(arrLines.size() > 0)
-					return arrLines.get(0);
-			}
-			catch(IOException e)
+			if(objFile.exists())
 			{
-				System.err.println("Error reading data file: " + e.getMessage());
+				try
+				{
+					List<String> arrLines = Files.readAllLines(Paths.get(WebsiteChecker.DATA_FILE), Charset.defaultCharset());
+
+					if(arrLines.size() > 0)
+						return arrLines.get(0);
+				}
+				catch(IOException e)
+				{
+					System.err.println("Error reading data file: " + e.getMessage());
+				}
 			}
+		}
+		catch(URISyntaxException e)
+		{
+			e.printStackTrace();
 		}
 
 		return null;
@@ -92,10 +100,9 @@ public class WebsiteChecker extends Thread
 	@Override
 	public void run()
 	{
-		System.out.println("Debug");
 		try
 		{
-			System.out.println("ok");
+			Driver.println("Checking " + WebsiteChecker.TARGET_URL + "...");
 			Document objDoc = Jsoup.connect(WebsiteChecker.TARGET_URL).timeout(1000*25).get();
 			Element objHeader = objDoc.getElementById("headerEmergency");
 
@@ -133,9 +140,7 @@ public class WebsiteChecker extends Thread
 			}
 
 			if(!bUpdated)
-				Driver.println("Hit " + WebsiteChecker.TARGET_URL + ", no changes found");
-
-			Driver.println("Finished WebsiteChecker");
+				Driver.println("...no changes found");
 		}
 		catch(IOException e)
 		{
