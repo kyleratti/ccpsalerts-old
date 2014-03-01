@@ -14,7 +14,7 @@ public class CronService extends Thread
 	@Override
 	public void run()
 	{
-		ScheduledExecutorService objThreadPool = Executors.newScheduledThreadPool(5);
+		ScheduledExecutorService objThreadPool = Executors.newScheduledThreadPool(10);
 		objThreadPool.scheduleAtFixedRate(new MinuteCron(), 0, 60, TimeUnit.SECONDS);
 	}
 }
@@ -26,8 +26,6 @@ class MinuteCron implements Runnable
 	{
 		Driver.println("Starting WebsiteChecker");
 		WebsiteChecker objChecker = new WebsiteChecker();
-		Driver.println("Created new WebsiteChecker");
 		objChecker.start();
-		Driver.println("Started WebsiteChecker");
 	}
 }
