@@ -43,7 +43,7 @@ public class WebsiteChecker extends Thread
 	{
 		try
 		{
-			File objFile = new File(Thread.currentThread().getContextClassLoader().getResource(WebsiteChecker.DATA_FILE).toURI());
+			File objFile = new File(WebsiteChecker.DATA_FILE);//Thread.currentThread().getContextClassLoader().getResource(WebsiteChecker.DATA_FILE).toURI());
 
 			if(objFile.exists())
 			{
