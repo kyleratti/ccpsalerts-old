@@ -102,7 +102,7 @@ public class WebsiteChecker extends Thread
 	{
 		try
 		{
-			Driver.println("Checking " + WebsiteChecker.TARGET_URL + "...");
+			Driver.println("\tChecking " + WebsiteChecker.TARGET_URL + "...");
 			Document objDoc = Jsoup.connect(WebsiteChecker.TARGET_URL).timeout(1000*25).get();
 			Element objHeader = objDoc.getElementById("headerEmergency");
 
