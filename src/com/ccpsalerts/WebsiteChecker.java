@@ -126,13 +126,13 @@ public class WebsiteChecker extends Thread
 							{
 								TwitterAPI.updateStatus("From carrollk12.org: " + strText);
 								bUpdated = true;
-								Driver.println("Updated status: " + strText);
+								Driver.println("\tUpdated status: " + strText);
 
 								this.setLastAnnouncement(strText);
 							}
 							catch(TwitterException e)
 							{
-								Driver.errorln("Error sending status update: " + e.getMessage());
+								Driver.errorln("\tError sending status update: " + e.getMessage());
 							}
 						}
 					}
@@ -140,7 +140,7 @@ public class WebsiteChecker extends Thread
 			}
 
 			if(!bUpdated)
-				Driver.println("...no changes found");
+				Driver.println("\t...no changes found");
 		}
 		catch(IOException e)
 		{
