@@ -60,7 +60,7 @@ public class WebsiteChecker extends Thread
 				}
 			}
 		}
-		catch(URISyntaxException e)
+		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
