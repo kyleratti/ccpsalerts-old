@@ -144,7 +144,7 @@ public class WebsiteChecker extends Thread
 		}
 		catch(IOException e)
 		{
-			Driver.errorln("Error retrieving webpage: " + e.getMessage());
+			Driver.errorln("\tError retrieving webpage: " + e.getMessage());
 		}
 	}
 }
