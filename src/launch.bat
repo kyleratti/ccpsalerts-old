@@ -1,2 +1,2 @@
 @echo off
-java -cp ".;..\bin\*" -jar ccpsalerts.jar
+java -cp ".;..\lib\*" -jar ccpsalerts.jar

@@ -1,3 +1,3 @@
 #!/bin/bash
-javac -cp ".:../bin/*" com/ccpsalerts/*.java
-java -cp ".:../bin/*" com.ccpsalerts.Driver
+javac -cp ".:../lib/*" com/ccpsalerts/*.java
+java -cp ".:../lib/*" com.ccpsalerts.Driver
