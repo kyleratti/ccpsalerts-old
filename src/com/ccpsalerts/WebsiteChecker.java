@@ -38,16 +38,17 @@ public class WebsiteChecker extends Thread
 	private static final String TARGET_URL = "http://carrollk12.org";
 	//private static final String TARGET_URL = "https://dl.dropboxusercontent.com/u/161991137/saved/Carroll%20County%20Public%20Schools.html";
 	private static final String DATA_FILE = "website.dat";
-	private final CronWorker cronWorker;
+	
+	private final int delay;
 
-	public WebsiteChecker(CronWorker objWorker)
+	/**
+	* Creates a new website checker
+	*
+	* @param iDelay The number of seconds the checker may run before terminating
+	*/
+	public WebsiteChecker(int iDelay)
 	{
-		this.cronWorker = objWorker;
-	}
-
-	public CronWorker getCronWorker()
-	{
-		return this.cronWorker;
+		this.delay = iDelay;
 	}
 
 	private String getLastAnnouncement()
@@ -114,7 +115,7 @@ public class WebsiteChecker extends Thread
 		try
 		{
 			Driver.println("\tChecking " + WebsiteChecker.TARGET_URL + "...");
-			Document objDoc = Jsoup.connect(WebsiteChecker.TARGET_URL).timeout(1000*(this.getCronWorker().getDelay() / 2)).get();
+			Document objDoc = Jsoup.connect(WebsiteChecker.TARGET_URL).timeout(1000 * this.delay).get();
 			Element objHeader = objDoc.getElementById("headerEmergency");
 
 			boolean bUpdated = false;

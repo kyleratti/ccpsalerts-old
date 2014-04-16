@@ -32,6 +32,9 @@ public class TwitterAPI
 	*/
 	public static void updateStatus(String strStatus) throws TwitterException
 	{
-		TwitterAPI.getInstance().updateStatus(strStatus);
+		if(Driver.DEBUGGING)
+			Driver.println("Sending tweet\n\tContent: " + strStatus);
+		else
+			TwitterAPI.getInstance().updateStatus(strStatus);
 	}
 }
