@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-*.class
-=======
 *.class
 website.dat
+data/
 # ccpsalerts.jar
 
 # Package Files #
@@ -10,4 +8,3 @@ website.dat
 *.war
 *.ear
 src/ccpsalerts.jar
->>>>>>> origin/java-dev
