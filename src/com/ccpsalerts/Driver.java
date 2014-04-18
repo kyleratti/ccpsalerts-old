@@ -20,10 +20,10 @@ import java.util.HashMap;
 import java.text.SimpleDateFormat;
 
 /*
-* - Last day
-* - Prom
-* - Graduation
-* - Senior Dinner
+* Last Day 			- Done
+* Prom
+* Graduation
+* Senior Dinner
 */
 
 public class Driver
@@ -248,7 +248,7 @@ public class Driver
 					* This is going to be a PITA
 					*
 					* TODO
-					*	- Find the date for every school
+					*	- Find the date and time for every school
 					*	- Calculate days util each
 					*	- Write to image
 					*	- Tweet image
