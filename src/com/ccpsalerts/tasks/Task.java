@@ -3,7 +3,7 @@
 * @version 1.0, 04/16/14
 */
 
-package com.ccpsalerts;
+package com.ccpsalerts.tasks;
 
 /** An task to process */
 public class Task extends Thread

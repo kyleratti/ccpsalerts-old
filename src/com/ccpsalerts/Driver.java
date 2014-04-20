@@ -8,15 +8,12 @@ package com.ccpsalerts;
 import com.ccpsalerts.tasks.*;
 import com.ccpsalerts.calendar.*;
 
+import org.joda.time.*;
+//import org.joda.time.DateTimeConstants.*;
+
 import org.apache.commons.cli.*;
 
-import org.joda.time.*;
-import org.joda.time.DateTimeConstants.*;
-
-import twitter4j.*;
-
 import java.util.Date;
-import java.util.HashMap;
 
 import java.text.SimpleDateFormat;
 
@@ -63,6 +60,7 @@ public class Driver
 
 		Driver.setup();
 
+		assert objCL != null;
 		if(objCL.hasOption("t"))
 		{
 			String strTask = objCL.getOptionValue("t", null);
@@ -180,57 +178,8 @@ public class Driver
 				@Override
 				public void run()
 				{
-					int iRemaining = Driver.schoolCalendar.getNumRemainingSchoolDays();
-					int iRemainingSeniors = iRemaining - SchoolCalendar.SENIOR_OFFSET;
-
-					if(iRemaining < 0)
-						Driver.errorln("Ran Last Day Countdown after the last day for seniors happened", true);
-
-					StringBuilder objBuilder = new StringBuilder("- Summer Countdown -\n\n");
-
-					// All students
-					if(iRemaining == 0)
-						objBuilder.append("This is it! School's out for summer! https://www.youtube.com/watch?v=qga5eONXU_4");
-					else if(iRemaining > 0)
-					{
-						objBuilder.append("Non-Seniors: ");
-						objBuilder.append(iRemaining);
-						objBuilder.append(" school day");
-						objBuilder.append(iRemaining != 1 ? "s" : "");
-						objBuilder.append(" to go!");
-					}
-
-					// Seniors
-					if(iRemainingSeniors >= 0)
-					{
-						objBuilder.append("\nSeniors: ");
-
-						if(iRemainingSeniors == 0)
-						{
-							objBuilder.append("This is it, our last day of high school!");
-						}
-						else
-						{
-							objBuilder.append("Only ");
-							objBuilder.append(iRemainingSeniors);
-							objBuilder.append(" school day");
-							objBuilder.append(iRemainingSeniors != 1 ? "s" : "");
-							objBuilder.append(" left!");
-						}
-					}
-
-					try
-					{
-						TwitterAPI.updateStatus(objBuilder.toString());
-						Driver.println("Tweet sent!");
-					}
-					catch(TwitterException e)
-					{
-						Driver.errorln("\tError sending status update: " + e.getMessage());
-					}
-					
-					//System.out.println(objLastDay);
-					//Driver.println("Theoretically calculating the school days left and tweeting it");
+					Countdown objLastDay = new LastDayCountdown();
+					objLastDay.start();
 				}
 			});
 
@@ -253,6 +202,11 @@ public class Driver
 					*/
 				}
 			});
+	}
+
+	public static SchoolCalendar getCalendar()
+	{
+		return Driver.schoolCalendar;
 	}
 
 	public static void println(String strMsg)

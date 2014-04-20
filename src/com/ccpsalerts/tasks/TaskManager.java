@@ -3,7 +3,7 @@
 * @version 1.0, 04/16/14
 */
 
-package com.ccpsalerts;
+package com.ccpsalerts.tasks;
 
 import java.util.HashMap;
 
