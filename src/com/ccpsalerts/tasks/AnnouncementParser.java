@@ -44,9 +44,9 @@ public class AnnouncementParser extends Thread
 	private final int delay;
 
 	/**
-	* Creates a new website checker
+	* Creates a new announcement parser. Connects to the CCPS website and attempts to parse the HTML for announcements
 	*
-	* @param iDelay The number of seconds the checker may run before terminating
+	* @param iDelay The number of seconds the parser may run before terminating
 	*/
 	public AnnouncementParser(int iDelay)
 	{
