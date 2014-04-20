@@ -3,7 +3,7 @@
 * @version 1.0, 02/27/14
 */
 
-package com.ccpsalerts;
+package com.ccpsalerts.tasks;
 
 import java.net.URL;
 import java.net.HttpURLConnection;
