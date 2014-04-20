@@ -37,10 +37,8 @@ public class Driver
 
 	public static void main(String[] args)
 	{
-		Options objOptions = new Options();
-		Option objTask = new Option("t", "task", true, "the task to execute");
-		
-		objOptions.addOption(objTask);
+		Options objOptions = new Options();	
+		objOptions.addOption(new Option("t", "task", true, "the task to execute"));
 
 		CommandLineParser objParser = new GnuParser();
 		CommandLine objCL = null;
@@ -191,9 +189,7 @@ public class Driver
 
 					// All students
 					if(iRemaining == 0)
-					{
 						objBuilder.append("This is it! School's out for summer! https://www.youtube.com/watch?v=qga5eONXU_4");
-					}
 					else if(iRemaining > 0)
 					{
 						objBuilder.append("Non-Seniors: ");
