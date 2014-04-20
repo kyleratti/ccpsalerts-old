@@ -5,6 +5,9 @@
 
 package com.ccpsalerts.tasks;
 
+import com.ccpsalerts.Driver;
+import com.ccpsalerts.TwitterAPI;
+
 import java.net.URL;
 import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
@@ -33,10 +36,9 @@ import org.jsoup.nodes.Document;
 
 import twitter4j.*;
 
-public class WebsiteChecker extends Thread
+public class AnnouncementParser extends Thread
 {
 	private static final String TARGET_URL = "http://carrollk12.org";
-	//private static final String TARGET_URL = "https://dl.dropboxusercontent.com/u/161991137/saved/Carroll%20County%20Public%20Schools.html";
 	private static final String DATA_FILE = "website.dat";
 	
 	private final int delay;
@@ -46,7 +48,7 @@ public class WebsiteChecker extends Thread
 	*
 	* @param iDelay The number of seconds the checker may run before terminating
 	*/
-	public WebsiteChecker(int iDelay)
+	public AnnouncementParser(int iDelay)
 	{
 		this.delay = iDelay;
 	}
@@ -55,13 +57,13 @@ public class WebsiteChecker extends Thread
 	{
 		try
 		{
-			File objFile = new File(WebsiteChecker.DATA_FILE);//Thread.currentThread().getContextClassLoader().getResource(WebsiteChecker.DATA_FILE).toURI());
+			File objFile = new File(AnnouncementParser.DATA_FILE);//Thread.currentThread().getContextClassLoader().getResource(AnnouncementParser.DATA_FILE).toURI());
 
 			if(objFile.exists())
 			{
 				try
 				{
-					List<String> arrLines = Files.readAllLines(Paths.get(WebsiteChecker.DATA_FILE), Charset.defaultCharset());
+					List<String> arrLines = Files.readAllLines(Paths.get(AnnouncementParser.DATA_FILE), Charset.defaultCharset());
 
 					if(arrLines.size() > 0)
 						return arrLines.get(0);
@@ -86,7 +88,7 @@ public class WebsiteChecker extends Thread
 
 		try
 		{
-			objWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(WebsiteChecker.DATA_FILE), "UTF-8"));
+			objWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(AnnouncementParser.DATA_FILE), "UTF-8"));
 			objWriter.write(strLast);
 		}
 		catch(IOException e)
@@ -114,8 +116,8 @@ public class WebsiteChecker extends Thread
 	{
 		try
 		{
-			Driver.println("\tChecking " + WebsiteChecker.TARGET_URL + "...");
-			Document objDoc = Jsoup.connect(WebsiteChecker.TARGET_URL).timeout(1000 * this.delay).get();
+			Driver.println("\tChecking " + AnnouncementParser.TARGET_URL + "...");
+			Document objDoc = Jsoup.connect(AnnouncementParser.TARGET_URL).timeout(1000 * this.delay).get();
 			Element objHeader = objDoc.getElementById("headerEmergency");
 
 			boolean bUpdated = false;

@@ -5,6 +5,7 @@
 
 package com.ccpsalerts;
 
+import com.ccpsalerts.tasks.*;
 import com.ccpsalerts.calendar.*;
 
 import org.apache.commons.cli.*;
@@ -164,13 +165,13 @@ public class Driver
 
 	private static void setupTasks()
 	{
-		Driver.taskManager.add(new Task("Website Checker")
+		Driver.taskManager.add(new Task("Announcement Parser")
 			{
 				@Override
 				public void run()
 				{
-					WebsiteChecker objChecker = new WebsiteChecker(30);
-					objChecker.start();
+					AnnouncementParser objParser = new AnnouncementParser(30);
+					objParser.start();
 				}
 			});
 
