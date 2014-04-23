@@ -6,23 +6,15 @@
 package com.ccpsalerts.tasks;
 
 import com.ccpsalerts.Driver;
-import com.ccpsalerts.TwitterAPI;
-
-import java.net.URL;
-import java.net.HttpURLConnection;
-import java.net.URISyntaxException;
-import java.net.MalformedURLException;
+import com.ccpsalerts.twitter.TwitterAPI;
 
 import java.io.File;
 import java.io.Writer;
 import java.io.IOException;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import java.nio.file.Path;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 

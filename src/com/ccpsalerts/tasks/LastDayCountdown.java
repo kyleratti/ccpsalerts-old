@@ -1,7 +1,8 @@
 package com.ccpsalerts.tasks;
 
 import com.ccpsalerts.Driver;
-import com.ccpsalerts.TwitterAPI;
+import com.ccpsalerts.twitter.TwitterAPI;
+import com.ccpsalerts.twitter.TweetTooLongException;
 import com.ccpsalerts.calendar.SchoolCalendar;
 import twitter4j.TwitterException;
 
@@ -30,7 +31,7 @@ public class LastDayCountdown extends Countdown {
 			objBuilder.append(iRemaining);
 			objBuilder.append(" school day");
 			objBuilder.append(iRemaining != 1 ? "s" : "");
-			objBuilder.append(" to go!");
+			objBuilder.append(" to go");
 		}
 
 		// Seniors
@@ -56,6 +57,12 @@ public class LastDayCountdown extends Countdown {
 		{
 			TwitterAPI.updateStatus(objBuilder.toString());
 			Driver.println("Tweet sent!");
+		}
+		catch(TweetTooLongException e)
+		{
+			String strTweet = e.getMessage();
+
+			Driver.errorln(String.format("\tTweet is too long (was %d, max 140)%n\t\tTweet: %s", strTweet.length(), strTweet));
 		}
 		catch(TwitterException e)
 		{

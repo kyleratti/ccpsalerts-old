@@ -3,10 +3,10 @@
 * @version 1.0, 02/27/14
 */
 
-package com.ccpsalerts;
+package com.ccpsalerts.twitter;
 
+import com.ccpsalerts.Driver;
 import twitter4j.*;
-import twitter4j.api.*;
 import twitter4j.conf.ConfigurationBuilder;
 
 public class TwitterAPI
