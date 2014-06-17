@@ -1,0 +1,10 @@
+*.class
+website.dat
+data/
+# ccpsalerts.jar
+
+# Package Files #
+# *.jar
+*.war
+*.ear
+src/ccpsalerts.jar
